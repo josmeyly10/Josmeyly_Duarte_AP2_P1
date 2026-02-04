@@ -5,4 +5,6 @@ import dagger.hilt.android.HiltAndroidApp
 
 
 @HiltAndroidApp
-class Josmeyly_Duarte_AP2_P1app : Application()
+class Josmeyly_Duarte_AP2_P1App : Application(){
+
+}
