@@ -12,6 +12,6 @@ import com.example.josmeyly_duarte_ap2_p1.data.local.entities.CervezaEntity
 )
 abstract class CervezaDb : RoomDatabase(){
 
-abstract fun CervezaDao(): CervezaDao
+abstract fun cervezaDao(): CervezaDao
 
  }

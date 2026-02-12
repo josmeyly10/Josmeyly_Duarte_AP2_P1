@@ -2,7 +2,8 @@ package com.example.josmeyly_duarte_ap2_p1.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.josmeyly_duarte_ap2_p1.data.local.database.BorrameDb
+import com.example.josmeyly_duarte_ap2_p1.data.local.dao.CervezaDao
+import com.example.josmeyly_duarte_ap2_p1.data.local.database.CervezaDb
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,13 +17,19 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideEstudianteDb(
+    fun provideCervezaDb(
         @ApplicationContext appContext: Context
-    ): BorrameDb = Room.databaseBuilder(
+    ): CervezaDb = Room.databaseBuilder(
         appContext,
-        BorrameDb::class.java,
-        "Borrame.db"
+        CervezaDb::class.java,
+        "Cerveza.db"
     )
         .fallbackToDestructiveMigration()
         .build()
+
+    @Provides
+    @Singleton
+    fun provideCervezaDao(database: CervezaDb): CervezaDao {
+        return database.cervezaDao()
+    }
 }

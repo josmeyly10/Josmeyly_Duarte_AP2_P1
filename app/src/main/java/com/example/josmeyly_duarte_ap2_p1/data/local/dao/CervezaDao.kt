@@ -1,10 +1,12 @@
 package com.example.josmeyly_duarte_ap2_p1.data.local.dao
 
+import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
 import com.example.josmeyly_duarte_ap2_p1.data.local.entities.CervezaEntity
 import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface CervezaDao {
     @Upsert
     suspend fun upsert(cerveza: CervezaEntity)
@@ -21,12 +23,14 @@ interface CervezaDao {
     @Query("SELECT * FROM Cervezas WHERE cervezaId=:id")
     fun observeById(id:Int): Flow<CervezaEntity>
 
-    @Query("SELECT * FROM Cervezas ORDER BY nombre ASC ")
-    fun observeAll(id:Int):Flow<List<CervezaEntity>>
-
-
+    @Query("SELECT * FROM Cervezas ORDER BY cervezaId DESC")
+    fun observeAll(): Flow<List<CervezaEntity>>
 
 }
+
+
+
+
 
 
 
